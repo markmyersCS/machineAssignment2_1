@@ -1,0 +1,64 @@
+/*
+ * Changes of base have everything to do with mod and exponentation:
+ * In our regular 10-base decimal system, each place value can hold from 0-9 before you have to "carry" over to the next place value.
+ * 
+ * We can view the placevalues like this:
+ * ______ ____ ____ ____ ____
+ * 10,000 1000 100  10   1
+ * 
+ * Noticing the pattern, we can write them like this:
+ * ____ ____ ____ ____ ____
+ * 10^4 10^3 10^2 10^1 10^0
+ * 
+ * You can notice this in binary representations as well:
+ * __ __ __ __ __
+ * 16 8  4  2  1
+ * 
+ * or, equivalently:
+ * ___ ___ ___ ___ ___
+ * 2^4 2^3 2^2 2^1 2^0
+ * 
+ * 
+ * We can genericize this to fit any base number as the following:
+ * If our base = n:
+ * ___ ___ ___ ___ ___
+ * n^4 n^3 n^2 n^1 n^0
+ * 
+ * 
+ * The way we code this is not from right to left, the way we tend to think of placevalue as humans doing math on paper.
+ * Instead, we code this from left (largest) to right (smallest).
+ * 
+ * Below is an incomplete sample:
+ *
+*/
+
+int number;
+int base;
+string newNumber;
+
+int placeValue = 10;
+while (placeValue >= 0)
+{
+  // Get the number to put in the largest placevalue
+  int nextValue = number / (base ^ placeValue);
+  
+  // Is the number a 0 in the leftmost position?
+  if (newNumber == "" && nextValue == 0)
+  {
+    // we're not putting anything in, because this is a 0 all the way in the left
+    // it's like the difference between writing 0000265 and 265.
+    // it's not "wrong" but we're getting rid of a lot of padding
+  }
+  else
+  {
+    newNumber += nextValue.ToString(); // this is C#, whatever the C++ equivalent is lol
+  }
+  
+  // Change the number we're evaluating
+  number = number % (base ^ placeValue);
+  
+  // Get ready for the next loop
+  placeValue -= 1;
+}
+
+return newNumber.ToInt(); // again, whatever the C++ version is
