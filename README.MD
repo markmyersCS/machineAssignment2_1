@@ -25,7 +25,7 @@ if run with the command:
 ```
 The output will be:
 ```
-Originial:		0.22
+Originial:	0.22
 Base 6 result:	0.1;1;5;3;0;4;1;5;
 ```
 
@@ -37,6 +37,6 @@ if run with the command:
 
 The output will be:
 ```
-Originial:		0.65
+Originial:	0.65
 Base 9 result:	0.5;7;5;7;5;7;5;7;
 ```
