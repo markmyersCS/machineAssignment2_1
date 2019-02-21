@@ -1,7 +1,21 @@
+/**
+* @file machineAssg2_1.cpp
+* @author Mark Myers
+*
+*
+* @section DESCRIPTION
+* 
+*Program takes an arbitrary decimal in base 10 and arbitrary base
+*and converts the base 10 decimal into the new base.
+*
+*/
+
 #include <iostream>
 
 using namespace std;
 
+
+void printDisplay(int base, double carryBit);
 void calculation (int base, double carryBit, int binaryResult);
 
 int main (int argc, char *argv[])
@@ -32,17 +46,11 @@ int main (int argc, char *argv[])
 	//if the number given is a decimal preform the calculation. 
 	else{
 
-		//print original
-		cout<< "\nOriginial:\t" << carryBit << endl;
-
-		//print binaryresult (the number in its new base)
-		cout<< "Base " <<base<< " result:\t";
-
-		//adds leading ones place and decimal
-		cout<< "0.";
+		//print display information
+		printDisplay(base, carryBit);
 
 		//function call of calculation
-		calculation (base,carryBit,binaryResult);
+		calculation (base, carryBit, binaryResult);
 
 		//lines for formatting
 		cout<<endl;
@@ -52,7 +60,15 @@ int main (int argc, char *argv[])
 	return 0;
 }
 
-/* Preforms the conversion/calculation */
+/**
+*
+* Preforms the conversion/calculation
+*
+* @param base - the base wanted
+* @param carryBit - the decimal being converted
+* @param binaryResult - the resulting decimal after conversion
+*
+*/
 void calculation (int base, double carryBit, int binaryResult)
 {
 	//int counter for whileloop
@@ -76,12 +92,27 @@ void calculation (int base, double carryBit, int binaryResult)
 		//';' allows the base 10 representation to be used 
 		//in leiu of the hex representation.
 		cout << binaryResult << ";";
-	}
 
+	}//end of while loop
 }
 
+/**
+*
+* Displays the information given and format for the results
+*
+* @param base - the base wanted
+* @param carryBit - the decimal being converted
+*
+*/
+void printDisplay(int base, double carryBit)
+{
+	//print original
+	cout<< "\nOriginial:\t" << carryBit << endl;
 
+	//print binaryresult (the number in its new base)
+	cout<< "Base " <<base<< " result:\t";
 
+	//adds leading ones place and decimal
+	cout<< "0.";
 
-
-
+}
